@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="jquery-3.3.1.min.js"></script>
     <script src="client.js"></script>
     <title>Salary Calculator</title>
 </head>
@@ -14,12 +15,14 @@
     </div>
     <div id="addEmployeeDiv" class="container-fluid">
         <h3>Add Employee</h3>
+        <div class="row">
         <input type="text" placeholder="First Name">
         <input type="text" placeholder="Last Name">
         <input type="number" placeholder="ID">
         <input type="text" placeholder="Title">
         <input type="text" placeholder="Annual Salery">
-        <button>Submit</button>
+        </div>
+        <button id="addEmployeeBtn">Submit</button>
     </div>
     <div id="tableEmployeeDiv" class="container-fluid">
         <h3>Employees</h3>
