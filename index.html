@@ -10,17 +10,17 @@
     <title>Salary Calculator</title>
 </head>
 <body>
-    <div class="container-fluid" style="text-align: center">
+    <div class="container-fluid" style="text-align: center" id="redIfOver">
         <h1>Salary Calculator</h1>
     </div>
     <div id="addEmployeeDiv" class="container-fluid">
         <h3>Add Employee</h3>
         <div class="row">
-        <input type="text" placeholder="First Name">
-        <input type="text" placeholder="Last Name">
-        <input type="number" placeholder="ID">
-        <input type="text" placeholder="Title">
-        <input type="text" placeholder="Annual Salery">
+        <input type="text" placeholder="First Name" id="inputFirstName">
+        <input type="text" placeholder="Last Name" id="inputLastName">
+        <input type="number" placeholder="ID" id="inputID">
+        <input type="text" placeholder="Title" id="inputTitle">
+        <input type="text" placeholder="Annual Salary" id="inputSalary">
         </div>
         <button id="addEmployeeBtn">Submit</button>
     </div>
@@ -36,30 +36,12 @@
                     <td class="col-sm">Annual Salary</td>
                 </tr>
             </thead>
-            <tbody class="table-striped">
-                <tr class="row">
-                    <td class="col-sm">Mark</td>
-                    <td class="col-sm">Otto</td>
-                    <td class="col-sm">2245</td>
-                    <td class="col-sm">Manager</td>
-                    <td class="col-sm">45000</td>
-                </tr>
-                <tr class="row">
-                    <td class="col-sm">Jacob</td>
-                    <td class="col-sm">Thornton</td>
-                    <td class="col-sm">2245</td>
-                    <td class="col-sm">Cashier</td>
-                    <td class="col-sm">32000</td>
-                </tr>
-                <tr class="row">
-                    <td class="col-sm">Larry</td>
-                    <td class="col-sm">Bird</td>
-                    <td class="col-sm">2245</td>
-                    <td class="col-sm">Cashier</td>
-                    <td class="col-sm">31000</td>
-                </tr>
+            <tbody class="table-striped" id="tableOfEmployees">
             </tbody>
         </table>
+    </div>
+    <div>
+        <h3 id="totalSalary">Total Monthly: 0</h3>
     </div>
 </body>
 </html>
