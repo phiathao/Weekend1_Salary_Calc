@@ -20,10 +20,20 @@ function readyJQ(){
 
 function addEmployeeFn(){
     console.log( 'button work' );
-    if( $('#inputFirstName').val() == '' || $('#inputLastName').val() == '' || $('#inputID').val() == '' || $('#inputTitle').val() == '' || $('#inputSalary').val() == ''){
-        alert(' Form not filled');
+    if( $('#inputFirstName').val() == '' || 
+        $('#inputLastName').val() == '' || 
+        $('#inputID').val() == '' || 
+        $('#inputTitle').val() == '' || 
+        $('#inputSalary').val() == ''
+        ){
+        alert('Form not filled');
     } else {
-    const addingEmployee = new Employee ( $('#inputFirstName').val(), $('#inputLastName').val(), $('#inputID').val(), $('#inputTitle').val(), $('#inputSalary').val() );
+    const addingEmployee = new Employee ( 
+        $('#inputFirstName').val(), 
+        $('#inputLastName').val(), 
+        $('#inputID').val(), 
+        $('#inputTitle').val(), 
+        $('#inputSalary').val() );
     employeeArray.push(addingEmployee);
     console.log(employeeArray);
     displayEmployee();
@@ -62,13 +72,13 @@ function checkSalary(){
 }
 
 function removeEmployeeFunction(){
-    let findSalary = $(this).closest('.removeEmployeeClass').find('.tableSalary').text();
-    let findEmID = $(this).closest('.removeEmployeeClass').find('.tableID').text();
+    const findSalary = $(this).closest('.removeEmployeeClass').find('.tableSalary').text();
+    const findEmID = $(this).closest('.removeEmployeeClass').find('.tableID').text();
     console.log('finding salary', findSalary);
     console.log('finding ID', findEmID);
     // debugger;
     for ( let employee in employeeArray ) {
-        console.log('in emplyee remove loop');
+        console.log('in employee remove loop');
         if (findSalary == employeeArray[employee].annualSalary && findEmID == employeeArray[employee].id) {
             console.log('in removing employee');
             employeeArray.splice(employee, 1);
