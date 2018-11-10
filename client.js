@@ -20,10 +20,14 @@ function readyJQ(){
 
 function addEmployeeFn(){
     console.log( 'button work' );
+    if( $('#inputFirstName').val() == '' || $('#inputLastName').val() == '' || $('#inputID').val() == '' || $('#inputTitle').val() == '' || $('#inputSalary').val() == ''){
+        alert(' Form not filled');
+    } else {
     const addingEmployee = new Employee ( $('#inputFirstName').val(), $('#inputLastName').val(), $('#inputID').val(), $('#inputTitle').val(), $('#inputSalary').val() );
     employeeArray.push(addingEmployee);
     console.log(employeeArray);
     displayEmployee();
+    }
 }
 
 function displayEmployee(){
@@ -34,13 +38,13 @@ function displayEmployee(){
             `<tr class="row removeEmployeeClass">
             <td class="col-sm"><button class="removeEmployee">Remove</button>${employeeArray[employee].name}</td>
             <td class="col-sm">${employeeArray[employee].last}</td>
-            <td class="col-sm">${employeeArray[employee].id}</td>
+            <td class="col-sm tableID">${employeeArray[employee].id}</td>
             <td class="col-sm">${employeeArray[employee].title}</td>
-            <td class="col-sm">${employeeArray[employee].annualSalary}</td>
+            <td class="col-sm tableSalary">${employeeArray[employee].annualSalary}</td>
             </tr>`);
     }
     checkSalary();
-    $('.removeEmployee').on('click', $('#tableOfEmployees'), removeEmployeeFunction);
+    $('.removeEmployee').on('click', removeEmployeeFunction);
 }
 
 function checkSalary(){
@@ -58,7 +62,19 @@ function checkSalary(){
 }
 
 function removeEmployeeFunction(){
-    let findSalary;
-    $(this).closest('.removeEmployeeClass').remove();
+    let findSalary = $(this).closest('.removeEmployeeClass').find('.tableSalary').text();
+    let findEmID = $(this).closest('.removeEmployeeClass').find('.tableID').text();
+    console.log('finding salary', findSalary);
+    console.log('finding ID', findEmID);
+    // debugger;
+    for ( let employee in employeeArray ) {
+        console.log('in emplyee remove loop');
+        if (findSalary == employeeArray[employee].annualSalary && findEmID == employeeArray[employee].id) {
+            console.log('in removing employee');
+            employeeArray.splice(employee, 1);
+        };
+    }
+    // console.log($(this).closest('.removeEmployeeClass'));
+    $(this).parent().closest('.removeEmployeeClass').remove();
     checkSalary();
 }
