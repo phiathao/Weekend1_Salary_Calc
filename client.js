@@ -35,13 +35,16 @@ function addEmployeeFn(){
     if ( notFillArray.length > 0 ){ // check if there is a not filled input / every not fill input should increase the length of this array
         alert(notFillArray + ' is not fill'); // alert with the array to tell us which input is not fill
     } else {
-        const addingEmployee = new Employee ( // construct new Employee with value from the array
-            employeeFilledArray[0],
-            employeeFilledArray[1],
-            employeeFilledArray[2],
-            employeeFilledArray[3],
-            employeeFilledArray[4]
-            ); // end construct
+        // const addingEmployee = new Employee ( // construct new Employee with value from the array
+        //     employeeFilledArray[0],
+        //     employeeFilledArray[1],
+        //     employeeFilledArray[2],
+        //     employeeFilledArray[3],
+        //     employeeFilledArray[4]
+        employeeFilledArray.forEach(function (employeeProperty){
+            employeeFilledArray[employeeProperty] = new Employee ( employeeFilledArray[employeeProperty]);
+            console.log(employeeFilledArray[employeeProperty]);
+        }); // end construct
         console.log(addingEmployee); // check the newly added employee info
         employeeArray.push(addingEmployee); // push the newly added employee into the employeeArray
         displayEmployee(); // run this function
@@ -90,11 +93,13 @@ function checkSalary(){
         employeeTotalSalary += parseInt(employeeArray[employee].annualSalary);
     }
     console.log(employeeTotalSalary);
-    if (employeeTotalSalary > 20000) {
+    if (employeeTotalSalary / 12 > 20000) {
         // console.log('over salary');
-        $('#redIfOver').css('background-color', 'red');
+        $('#totalSalary').css('background-color', 'red');
+    } else if (employeeTotalSalary / 12 <=20000){
+        $('#totalSalary').css('background-color', '');
     }
-    $('#totalSalary').text(`Total Annual Salary: ${employeeTotalSalary}`);
+    $('#totalSalary').text(`Total Monthly Salary: ${employeeTotalSalary / 12 }`);
 }
 
 function removeEmployeeFunction(){
@@ -114,3 +119,10 @@ function removeEmployeeFunction(){
     $(this).parent().closest('.removeEmployeeClass').remove();
     checkSalary();
 }
+
+
+// for (let index = 0; index < array.length; index++) {
+//     if (emp = 0) {
+//         new emp = newemp
+//     } 
+// }
