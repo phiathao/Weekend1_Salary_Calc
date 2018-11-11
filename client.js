@@ -12,16 +12,17 @@ class Employee {
 }
 
 const employeeArray = [];
+let notFillArray = []; // contain input that is not fill 
+let employeeFilledArray = [];  // contain input information
 
 function readyJQ(){
     // console.log( 'jQ' );
     $('#addEmployeeBtn').on('click', addEmployeeFn);
 }
-
 function addEmployeeFn(){
     // console.log( 'button work' );
-    const notFillArray = []; // contain input that is not fill
-    const employeeFilledArray = []; // contain input information
+    notFillArray = []; // emptying array
+    employeeFilledArray = []; // emptying array
     ['FirstName', 'LastName', 'ID', 'Title', 'Salary'].forEach(function(inputName) { // loop through this array
         let inputIn = '#input'+inputName; // set/reassign class
         // console.log(inputIn);
@@ -31,23 +32,22 @@ function addEmployeeFn(){
             employeeFilledArray.push($(inputIn).val()); // if fill push the fill input into array
         }; // end if else
     }); // end loop
+
     // console.log(employeeFilledArray);
     if ( notFillArray.length > 0 ){ // check if there is a not filled input / every not fill input should increase the length of this array
-        alert(notFillArray + ' is not fill'); // alert with the array to tell us which input is not fill
-    } else {
-        // const addingEmployee = new Employee ( // construct new Employee with value from the array
-        //     employeeFilledArray[0],
-        //     employeeFilledArray[1],
-        //     employeeFilledArray[2],
-        //     employeeFilledArray[3],
-        //     employeeFilledArray[4]
-        employeeFilledArray.forEach(function (employeeProperty){
-            employeeFilledArray[employeeProperty] = new Employee ( employeeFilledArray[employeeProperty]);
-            console.log(employeeFilledArray[employeeProperty]);
-        }); // end construct
-        console.log(addingEmployee); // check the newly added employee info
+        return alert(notFillArray + ' is not fill'); // alert with the array to tell us which input is not fill
+    } if ( getArrayIDFunction() == true ){ // check if input same employee id
+        return alert('Employee ID already exist'); // will alert 
+    }else {
+        const addingEmployee = new Employee ( // construct new Employee with value from the array
+            employeeFilledArray[0],
+            employeeFilledArray[1],
+            employeeFilledArray[2],
+            employeeFilledArray[3],
+            employeeFilledArray[4]
+        );
         employeeArray.push(addingEmployee); // push the newly added employee into the employeeArray
-        displayEmployee(); // run this function
+        // run this function
     } // end of if else
     // if ( $('#inputFirstName').val() == '' ||        // ---- code work also but doesn't have alert
     //     $('#inputLastName').val() == '' || 
@@ -67,24 +67,8 @@ function addEmployeeFn(){
     // // console.log(employeeArray);
     // displayEmployee();
     // }
+    displayEmployee();
 } // end of function
-
-function displayEmployee(){
-    // console.log( 'in displayEmployee' );
-    $('#tableOfEmployees').empty();
-    for ( let employee in employeeArray ) {
-        $('#tableOfEmployees').append(
-            `<tr class="row removeEmployeeClass">
-            <td class="col-sm"><button class="removeEmployee">Remove</button>${employeeArray[employee].name}</td>
-            <td class="col-sm">${employeeArray[employee].last}</td>
-            <td class="col-sm tableID">${employeeArray[employee].id}</td>
-            <td class="col-sm">${employeeArray[employee].title}</td>
-            <td class="col-sm tableSalary">${employeeArray[employee].annualSalary}</td>
-            </tr>`);
-    }
-    checkSalary();
-    $('.removeEmployee').on('click', removeEmployeeFunction);
-}
 
 function checkSalary(){
     let employeeTotalSalary = 0;
@@ -102,6 +86,33 @@ function checkSalary(){
     $('#totalSalary').text(`Total Monthly Salary: ${employeeTotalSalary / 12 }`);
 }
 
+function displayEmployee(){
+    // console.log( 'in displayEmployee' );
+    $('#tableOfEmployees').empty();
+    for ( let employee in employeeArray ) {
+        $('#tableOfEmployees').append(
+            `<tr class="row removeEmployeeClass">
+            <td class="col-sm">${employeeArray[employee].name}</td>
+            <td class="col-sm">${employeeArray[employee].last}</td>
+            <td class="col-sm tableID">${employeeArray[employee].id}</td>
+            <td class="col-sm">${employeeArray[employee].title}</td>
+            <td class="col-sm tableSalary">${employeeArray[employee].annualSalary}</td>
+            <td class="col-sm"><button class="removeEmployee">Remove</button></td>
+            </tr>`);
+    }
+    checkSalary(); // re check the salary
+    $('.removeEmployee').on('click', removeEmployeeFunction); // after display this table watch for click action
+}
+
+function getArrayIDFunction(input){
+    for (i in employeeArray) {
+        if ( $('#inputID').val() == employeeArray[i].id) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function removeEmployeeFunction(){
     const findSalary = $(this).closest('.removeEmployeeClass').find('.tableSalary').text();
     const findEmID = $(this).closest('.removeEmployeeClass').find('.tableID').text();
@@ -117,7 +128,7 @@ function removeEmployeeFunction(){
     }
     // console.log($(this).closest('.removeEmployeeClass'));
     $(this).parent().closest('.removeEmployeeClass').remove();
-    checkSalary();
+    checkSalary(); // re check the salary
 }
 
 
