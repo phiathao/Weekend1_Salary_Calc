@@ -5,43 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="jquery-3.3.1.min.js"></script>
+    <script src="bootstrap.min.js"></script>
     <script src="client.js"></script>
     <title>Salary Calculator</title>
 </head>
 <body>
-    <div class="container-fluid" style="text-align: center" id="redIfOver">
+    <div class="container-fluid headOne" style="text-align: center" id="redIfOver">
         <h1>Salary Calculator</h1>
     </div>
-    <div id="addEmployeeDiv" class="container-fluid">
+    <div id="addEmployeeDiv" class="container-fluid table">
         <h3>Add Employee</h3>
         <div class="row">
-        <input type="text" placeholder="First Name" id="inputFirstName">
-        <input type="text" placeholder="Last Name" id="inputLastName">
-        <input type="number" placeholder="ID" id="inputID">
-        <input type="text" placeholder="Title" id="inputTitle">
-        <input type="text" placeholder="Annual Salary" id="inputSalary">
+        <input type="text" placeholder="First Name" id="inputFirstName" class=".form-control col aInput">
+        <input type="text" placeholder="Last Name" id="inputLastName" class=".form-control col aInput">
+        <input type="number" placeholder="ID" id="inputID" class=".form-control col aInput">
+        <input type="text" placeholder="Title" id="inputTitle" class=".form-control col aInput">
+        <input type="text" placeholder="Annual Salary" id="inputSalary" class=".form-control col aInput">
+        <button id="addEmployeeBtn" class="btn btn-outline-secondary .form-control col aInput">Submit</button>
         </div>
-        <button id="addEmployeeBtn">Submit</button>
     </div>
     <div id="tableEmployeeDiv" class="container-fluid">
         <h3>Employees</h3>
-        <table class="container-fluid">
+        <table class="container-fluid table table-striped">
             <thead class="thead-dark">
                 <tr class="row">
-                    <td class="col-sm">First Name</td>
-                    <td class="col-sm">Last Name</td>
-                    <td class="col-sm">ID</td>
-                    <td class="col-sm">Title</td>
-                    <td class="col-sm">Annual Salary</td>
-                    <td class="col-sm"></td>
+                    <td class="col">First Name</td>
+                    <td class="col">Last Name</td>
+                    <td class="col">ID</td>
+                    <td class="col">Title</td>
+                    <td class="col">Annual Salary</td>
+                    <td class="col"></td>
                 </tr>
             </thead>
-            <tbody class="table-striped" id="tableOfEmployees">
+            <tbody class="table" id="tableOfEmployees">
+                <tr class="row">
+                    <td class="col-12"></td>
+                </tr>
             </tbody>
         </table>
     </div>
-    <div>
+    <div class="container-fluid morePad">
         <h3 id="totalSalary">Total Monthly: 0</h3>
     </div>
 </body>

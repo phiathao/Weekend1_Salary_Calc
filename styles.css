@@ -1,7 +1,20 @@
-.red {
-    background-color: red
+.aInput {
+    margin: 15px;
 }
-
-.white{
-    background-color: white
+body {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+div h3 {
+    margin: 25px;
+}
+.morePad {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+h1 {
+    padding: 30px;
+}
+.headOne {
+    background-color: bisque;
 }

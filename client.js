@@ -79,9 +79,9 @@ function checkSalary(){
     console.log(employeeTotalSalary);
     if (employeeTotalSalary / 12 > 20000) {
         // console.log('over salary');
-        $('#totalSalary').css('background-color', 'red');
+        $('#totalSalary').parent().css('background-color', 'red');
     } else if (employeeTotalSalary / 12 <=20000){
-        $('#totalSalary').css('background-color', '');
+        $('#totalSalary').parent().css('background-color', '');
     }
     $('#totalSalary').text(`Total Monthly Salary: ${employeeTotalSalary / 12 }`);
 }
@@ -92,12 +92,12 @@ function displayEmployee(){
     for ( let employee in employeeArray ) {
         $('#tableOfEmployees').append(
             `<tr class="row removeEmployeeClass">
-            <td class="col-sm">${employeeArray[employee].name}</td>
-            <td class="col-sm">${employeeArray[employee].last}</td>
-            <td class="col-sm tableID">${employeeArray[employee].id}</td>
-            <td class="col-sm">${employeeArray[employee].title}</td>
-            <td class="col-sm tableSalary">${employeeArray[employee].annualSalary}</td>
-            <td class="col-sm"><button class="removeEmployee">Remove</button></td>
+            <td class="col">${employeeArray[employee].name}</td>
+            <td class="col">${employeeArray[employee].last}</td>
+            <td class="col tableID">${employeeArray[employee].id}</td>
+            <td class="col">${employeeArray[employee].title}</td>
+            <td class="col tableSalary">${employeeArray[employee].annualSalary}</td>
+            <td class="col"><button class="removeEmployee btn btn-sm btn-outline-warning">Remove</button></td>
             </tr>`);
     }
     checkSalary(); // re check the salary
