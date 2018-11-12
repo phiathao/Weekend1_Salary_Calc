@@ -60,7 +60,7 @@ function checkSalary() {
     } else if (employeeTotalSalary / 12 <= 20000) {
         $('#totalSalary').parent().css('background-color', ''); // if salary under 20000 remove background color
     }
-    $('#totalSalary').text(`Total Monthly Salary: ${(employeeTotalSalary / 12).toFixed(2)}`); // display salary total / 12
+    $('#totalSalary').text(`Total Monthly Salary: $${(employeeTotalSalary / 12).toFixed(2)}`); // display salary total / 12
 }
 
 function displayEmployee() {
