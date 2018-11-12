@@ -21,7 +21,7 @@ function readyJQ() {
 function addEmployeeFn() { // watching for click to do this function
     notFillArray = []; // emptying array
     employeeFilledArray = []; // emptying array
-    ['FirstName', 'LastName', 'ID', 'Title', 'Salary'].forEach(function (inputName) { // loop through this array
+    ['FirstName', 'LastName', 'ID', 'Title', 'AnnualSalary'].forEach(function (inputName) { // loop through this array
         let inputIn = '#input' + inputName; // set/assign array to be a class exist in element
         if ($(inputIn).val() == '') { // check the assigned inputIn/class 
             notFillArray.push(` ${inputName}`); // if empty, push which input is empty
@@ -43,7 +43,7 @@ function addEmployeeFn() { // watching for click to do this function
             employeeFilledArray[4]
         ); // end constructor
         employeeArray.push(addingEmployee); // push the newly added employee into the employeeArray
-        ['FirstName', 'LastName', 'ID', 'Title', 'Salary'].forEach(function (inputName) { // loop through this array to clear input
+        ['FirstName', 'LastName', 'ID', 'Title', 'AnnualSalary'].forEach(function (inputName) { // loop through this array to clear input
             let inputIn = '#input' + inputName; // set/assign array to be a class exist in element
             $(`${inputIn}`).val(''); // clear this element value
         }); // end loop
