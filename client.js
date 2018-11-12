@@ -16,6 +16,8 @@ let employeeFilledArray = [];  // contain input information / reassign in line 2
 
 function readyJQ() {
     $('#addEmployeeBtn').on('click', addEmployeeFn); // line 21
+    $('#tableOfEmployees').on('click', '.removeEmployee', removeEmployeeFunction); // after the display, we watch for this click action / if click do this function
+
 }
 
 function addEmployeeFn() { // watching for click to do this function
@@ -49,6 +51,7 @@ function addEmployeeFn() { // watching for click to do this function
         }); // end loop
     } // end of if else
     displayEmployee(); // run displayEmployee fn
+    checkSalary(); // re check the salary / after adding
 } // end of function
 
 function checkSalary() {
@@ -79,10 +82,8 @@ function displayEmployee() {
     }
     $('#tableOfEmployees').append(`
         <tr class="row">
-            <td class="col-12">&nbsp</td>
-        </tr>`);
-    checkSalary(); // re check the salary
-    $('.removeEmployee').on('click', removeEmployeeFunction); // after the display, we watch for this click action / if click do this function
+            <td class="col-12">&nbsp</td> 
+        </tr>`); // add row at the end    
 }
 
 function getArrayIDFunction() { // function to check if there is duplicate ID
@@ -103,5 +104,5 @@ function removeEmployeeFunction() { // when remove is click
         };
     }
     $(this).parent().closest('.removeEmployeeClass').remove(); // remove from html
-    checkSalary(); // re check the salary
+    checkSalary(); // re check the salary after removing
 }
