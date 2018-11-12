@@ -30,7 +30,8 @@ function addEmployeeFn() { // watching for click to do this function
         }; // end if else / check
     }); // end loop
     if (notFillArray.length > 0) { // check if there is a not filled input / every not fill input should increase the length of this array
-        return alert(notFillArray + ' is not fill'); // alert with the array to tell us which input is not fill
+        let space = notFillArray.toString().replace(/([a-z])([A-Z])/g, '$1 $2'); // add space
+        return alert(space + ' is not fill'); // alert with the array to tell us which input is not fill
     } if (getArrayIDFunction() == true) { // check if input exist in employeeArray already // line 83
         return alert('Employee ID already exist'); // will alert 
     } else { // the other if's already check to make sure the employeeFilledArray is already fill up
