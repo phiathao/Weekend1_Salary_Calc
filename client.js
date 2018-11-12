@@ -33,7 +33,7 @@ function addEmployeeFn() { // watching for click to do this function
         return alert(notFillArray + ' is not fill'); // alert with the array to tell us which input is not fill
     } if (getArrayIDFunction() == true) { // check if input exist in employeeArray already // line 83
         return alert('Employee ID already exist'); // will alert 
-    } else {
+    } else { // the other if's already check to make sure the employeeFilledArray is already fill up
         const addingEmployee = new Employee( // construct new Employee with value from the array
             employeeFilledArray[0],
             employeeFilledArray[1],
@@ -91,7 +91,7 @@ function getArrayIDFunction() { // function to check if there is duplicate ID
 
 function removeEmployeeFunction() { // when remove is click
     const findSalary = $(this).closest('.removeEmployeeClass').find('.tableSalary').text(); // look for text/ salary in table
-    const findEmID = $(this).closest('.removeEmployeeClass').find('.tableID').text(); // look for text/ id in table
+    const findEmID = $(this).closest('.removeEmployeeClass').find('.tableID').text(); // look for text/ id in table // not needed after checking for duplicate id
     for (let employee in employeeArray) { // loop through array to remove
         if (findSalary == employeeArray[employee].annualSalary && findEmID == employeeArray[employee].id) { // doesn't need the annualSalary check because we already made sure that employee.id are never the same
             employeeArray.splice(employee, 1); // remove from employeeArray if clicked row match id/salary with it
