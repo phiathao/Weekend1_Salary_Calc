@@ -69,14 +69,18 @@ function displayEmployee() {
     for (let employee in employeeArray) { // for each employee inside employeeArray append their property into element
         $('#tableOfEmployees').append(
             `<tr class="row removeEmployeeClass">
-            <td class="col">${employeeArray[employee].name}</td>
-            <td class="col">${employeeArray[employee].last}</td>
-            <td class="col tableID">${employeeArray[employee].id}</td>
-            <td class="col">${employeeArray[employee].title}</td>
-            <td class="col tableSalary">${employeeArray[employee].annualSalary}</td>
-            <td class="col text-center"><button class="removeEmployee btn btn-sm btn-outline-warning">Remove</button></td>
+                <td class="col">${employeeArray[employee].name}</td>
+                <td class="col">${employeeArray[employee].last}</td>
+                <td class="col tableID">${employeeArray[employee].id}</td>
+                <td class="col">${employeeArray[employee].title}</td>
+                <td class="col tableSalary">${employeeArray[employee].annualSalary}</td>
+                <td class="col text-center"><button class="removeEmployee btn btn-sm btn-outline-warning">Remove</button></td>
             </tr>`);
     }
+    $('#tableOfEmployees').append(`
+        <tr class="row">
+            <td class="col-12">&nbsp</td>
+        </tr>`);
     checkSalary(); // re check the salary
     $('.removeEmployee').on('click', removeEmployeeFunction); // after the display, we watch for this click action / if click do this function
 }
