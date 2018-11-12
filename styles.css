@@ -18,3 +18,18 @@ h1 {
 .headOne {
     background-color: bisque;
 }
+.rowDark {
+    background-color: darkgray;
+}
+td, .table td, .table th {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+.table {
+    margin-bottom: 0;
+}
+.removeEmployee {
+    text-align: center;
+    position: relative;
+}

@@ -12,7 +12,7 @@
     <title>Salary Calculator</title>
 </head>
 <body>
-    <div class="container-fluid headOne" style="text-align: center" id="redIfOver">
+    <div class="container-fluid headOne" style="text-align: center">
         <h1>Salary Calculator</h1>
     </div>
     <div id="addEmployeeDiv" class="container-fluid table">
@@ -22,27 +22,24 @@
         <input type="text" placeholder="Last Name" id="inputLastName" class=".form-control col aInput">
         <input type="number" placeholder="ID" id="inputID" class=".form-control col aInput">
         <input type="text" placeholder="Title" id="inputTitle" class=".form-control col aInput">
-        <input type="text" placeholder="Annual Salary" id="inputSalary" class=".form-control col aInput">
+        <input type="number" placeholder="Annual Salary" id="inputSalary" class=".form-control col aInput">
         <button id="addEmployeeBtn" class="btn btn-outline-secondary .form-control col aInput">Submit</button>
         </div>
     </div>
     <div id="tableEmployeeDiv" class="container-fluid">
         <h3>Employees</h3>
-        <table class="container-fluid table table-striped">
-            <thead class="thead-dark">
-                <tr class="row">
+        <table class="container-fluid table-striped table">
+            <thead>
+                <tr class="row rowDark">
                     <td class="col">First Name</td>
                     <td class="col">Last Name</td>
                     <td class="col">ID</td>
                     <td class="col">Title</td>
                     <td class="col">Annual Salary</td>
-                    <td class="col"></td>
+                    <td class="col">Remove Employee</td>
                 </tr>
             </thead>
-            <tbody class="table" id="tableOfEmployees">
-                <tr class="row">
-                    <td class="col-12"></td>
-                </tr>
+            <tbody id="tableOfEmployees">
             </tbody>
         </table>
     </div>

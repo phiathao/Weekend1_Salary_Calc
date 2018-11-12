@@ -47,6 +47,11 @@ function addEmployeeFn(){
             employeeFilledArray[4]
         );
         employeeArray.push(addingEmployee); // push the newly added employee into the employeeArray
+        ['FirstName', 'LastName', 'ID', 'Title', 'Salary'].forEach(function(inputName) { // loop through this array
+            let inputIn = '#input'+inputName;
+            $(`${inputIn}`).val('');
+        });
+    
         // run this function
     } // end of if else
     // if ( $('#inputFirstName').val() == '' ||        // ---- code work also but doesn't have alert
@@ -83,12 +88,12 @@ function checkSalary(){
     } else if (employeeTotalSalary / 12 <=20000){
         $('#totalSalary').parent().css('background-color', '');
     }
-    $('#totalSalary').text(`Total Monthly Salary: ${employeeTotalSalary / 12 }`);
+    $('#totalSalary').text(`Total Monthly Salary: ${(employeeTotalSalary / 12).toFixed(2)}`);
 }
 
 function displayEmployee(){
     // console.log( 'in displayEmployee' );
-    $('#tableOfEmployees').empty();
+    $('#tableOfEmployees').empty(); // clear table
     for ( let employee in employeeArray ) {
         $('#tableOfEmployees').append(
             `<tr class="row removeEmployeeClass">
@@ -97,7 +102,7 @@ function displayEmployee(){
             <td class="col tableID">${employeeArray[employee].id}</td>
             <td class="col">${employeeArray[employee].title}</td>
             <td class="col tableSalary">${employeeArray[employee].annualSalary}</td>
-            <td class="col"><button class="removeEmployee btn btn-sm btn-outline-warning">Remove</button></td>
+            <td class="col text-center"><button class="removeEmployee btn btn-sm btn-outline-warning">Remove</button></td>
             </tr>`);
     }
     checkSalary(); // re check the salary
